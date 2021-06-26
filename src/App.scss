@@ -1,0 +1,11 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+.App {
+  & h1 {
+    font-size: 10rem;
+  }
+}
