@@ -6,7 +6,6 @@
   padding: 2rem;
   z-index: 1;
   transition: all 0.5s ease-in;
-  border: 2px solid black;
 
   &__black {
     background-color: #111;
@@ -19,10 +18,10 @@
 
   &__logo {
     position: fixed;
-    top: 0rem;
+    top: 1rem;
     left: 0;
     padding-left: 2rem;
-    width: 14rem;
+    width: 10rem;
     cursor: pointer;
   }
 
