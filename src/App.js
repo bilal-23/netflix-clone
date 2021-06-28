@@ -1,12 +1,15 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import requests from './axios/Request';
 import { useDispatch } from 'react-redux';
 import { moviesActions } from './store/moviesSlice';
 import useFetchMovies from './hooks/use-fetchMovies';
 import Homescreen from './components/Homescreen';
+import NetflixIntro from './components/UI/NetflixIntro';
 import './App.scss';
 
+
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
   const dispatch = useDispatch();
   const fetchMovie = useFetchMovies();
   useEffect(() => {
@@ -60,10 +63,18 @@ function App() {
 
   }, [dispatch, fetchMovie])
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 4000)
+
+    return (() => clearTimeout(timer));
+  })
 
   return (
     <div className="App">
-      <Homescreen />
+      {showIntro && <NetflixIntro />}
+      {!showIntro && <Homescreen />}
     </div>
   );
 }
