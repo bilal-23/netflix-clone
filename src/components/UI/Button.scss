@@ -1,3 +1,5 @@
+@import "../../styles/_mixins.scss";
+
 .btn {
   cursor: pointer;
   border: none;
@@ -10,6 +12,13 @@
   padding: 1rem 3rem;
   margin-right: 1rem;
   border-radius: 0.5rem;
+
+  @include respond(tab-port) {
+    font-size: 1.8rem;
+  }
+  @include respond(phone) {
+    font-size: 1.5rem;
+  }
 }
 .button--primary {
   background-color: #fff;

@@ -18,7 +18,7 @@ const Banner = ({ fetchUrl: fetchNetflixOriginals }) => {
             return request;
         }
         fetchData();
-    }, [])
+    }, [fetchNetflixOriginals])
     console.log(movie);
 
     const truncateString = (string, n) => {

@@ -20,11 +20,11 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     }, [fetchUrl]);
 
     const scrollLeftHandler = () => {
-        movieRowRef.current.scrollLeft -= 500;
+        movieRowRef.current.scrollLeft -= 350;
 
     }
     const scrollRightHandler = () => {
-        movieRowRef.current.scrollLeft += 500;
+        movieRowRef.current.scrollLeft += 350;
 
     }
 
@@ -36,7 +36,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
             <div className="row__posters" ref={movieRowRef}>
                 <div className="scroll__button left__button" onClick={scrollLeftHandler}><img src={leftbutton} alt="Scroll left" /></div>
                 <div className="scroll__button right__button" onClick={scrollRightHandler}><img src={rightButton} alt="Scroll right" /></div>
-                {movies.map(movie => <img key={movie.id} className={`row__poster`} src={`${image_url}${movie.poster_path}`} />)}
+                {movies.map(movie => <img key={movie.id} className={`row__poster`} src={`${image_url}${movie.poster_path}`} alt={movie.name} />)}
             </div>
         </div>
     )
