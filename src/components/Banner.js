@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../axios/axios';
+import play from '../assets/play.svg'
 import Button from './UI/Button';
 import './Banner.scss';
 
@@ -35,11 +36,11 @@ const Banner = ({ fetchUrl: fetchNetflixOriginals }) => {
                     <div className="banner__overview">{truncateString(movie?.overview, 200)}</div>
                     <div className="banner__buttons">
                         <Button className="button--primary">
-                            <svg stroke="currentColor" fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"></path></svg>
+                            <img src={play} alt="play now" />
                             Play
                         </Button>
                         <Button className="button--secondary">
-                            <svg stroke="currentColor" fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" ></path><path d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z"></path></svg>
+                            +
                             My List</Button>
                     </div>
                 </div>
