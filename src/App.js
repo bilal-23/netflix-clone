@@ -66,7 +66,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 4000)
+    }, 5000)
 
     return (() => clearTimeout(timer));
   })
