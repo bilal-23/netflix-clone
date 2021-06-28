@@ -1,26 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../axios/axios';
 import play from '../assets/play.svg'
 import Button from './UI/Button';
 import './Banner.scss';
 
-const Banner = ({ fetchUrl: fetchNetflixOriginals }) => {
+const Banner = ({ movies }) => {
     const [movie, setMovie] = useState([]);
-
     useEffect(() => {
-        const fetchData = async () => {
-            const request = await axios.get(fetchNetflixOriginals);
-            setMovie(
-                request.data.results[
-                Math.floor(Math.random() * request.data.results.length - 1)
-                ]
-            );
-            return request;
-        }
-        fetchData();
-    }, [fetchNetflixOriginals])
-    console.log(movie);
-
+        setMovie(movies[Math.floor(Math.random() * movies.length - 1)])
+    }, [movies]);
     const truncateString = (string, n) => {
         return string?.length > n ? string.substr(0, n - 1) + '...' : string
     }
