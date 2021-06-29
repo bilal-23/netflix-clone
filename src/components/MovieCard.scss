@@ -84,7 +84,7 @@
   }
 }
 
-@media only screen and (max-width: 600px), only screen and (hover: none) {
+@media only screen and (hover: none) {
   .movie__card {
     &__overlay {
       background: linear-gradient(
