@@ -15,11 +15,11 @@ const Homescreen = () => {
                 <Row title="Netflix Originals" movies={movies.netflixOriginals} />
                 <Row title="trending now" movies={movies.trending} />
                 <Row title="top rated" movies={movies.topRated} />
-                {/* <Row title="action movies" movies={movies.action} />
+                <Row title="action movies" movies={movies.action} />
                 <Row title="comedy movies" movies={movies.comedy} />
                 <Row title="horror movies" movies={movies.horror} />
                 <Row title="romance movies" movies={movies.romance} />
-                <Row title="documentaries" movies={movies.documentaries} /> */}
+                <Row title="documentaries" movies={movies.documentaries} />
             </div>
         </div>
     )
