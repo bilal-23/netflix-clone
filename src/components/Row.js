@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
 import leftbutton from '../assets/leftbutton.svg'
 import rightButton from '../assets/rightbutton.svg';
@@ -32,7 +33,7 @@ const Row = ({ title, movies: movieList }) => {
                 <div className="scroll__button left__button" onClick={scrollLeftHandler}><img src={leftbutton} alt="Scroll left" /></div>
                 <div className="scroll__button right__button" onClick={scrollRightHandler}><img src={rightButton} alt="Scroll right" /></div>
 
-                {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+                {movies.map(movie => <Link key={movie.id} to={`/${movie?.media_type || 'tv'}/${movie.id}`}> <MovieCard key={movie.id} movie={movie} /></Link>)}
             </div>
         </div>
     )

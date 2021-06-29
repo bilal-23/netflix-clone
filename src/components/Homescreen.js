@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Nav from './UI/Nav';
 import Banner from './Banner';
 import Row from './Row';
 import './Homescreen.scss';
@@ -9,7 +8,7 @@ const Homescreen = () => {
     const movies = useSelector(state => state.movies);
     return (
         <div className="homescreen">
-            <Nav />
+
             <Banner movies={movies.netflixOriginals} />
             <div className="rows">
                 <Row title="Netflix Originals" movies={movies.netflixOriginals} />

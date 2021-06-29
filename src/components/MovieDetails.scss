@@ -1,0 +1,172 @@
+@import "../styles/mixins";
+
+.movie__details {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  animation: opacity 1s ease forwards;
+  @include respond(phone) {
+    width: 95%;
+  }
+}
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.detail__content {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  justify-content: center;
+  align-items: center;
+
+  @include respond(tab-port) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &__poster > img {
+    max-height: 50rem;
+    object-fit: contain;
+    border-radius: 1rem;
+
+    @include respond(tab-port) {
+      max-height: 40rem;
+    }
+    @include respond(phone) {
+      object-fit: cover;
+      max-height: 20rem;
+    }
+  }
+}
+
+.detail {
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem 2rem;
+
+    @include respond(tab-port) {
+      margin-top: 0rem;
+    }
+  }
+  &__title {
+    font-size: 5rem;
+    font-size: 600;
+    @include respond(phone) {
+      font-size: 4rem;
+    }
+  }
+
+  &__additional__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 1.8rem;
+    opacity: 0.9;
+    font-weight: 400;
+    @include respond(phone) {
+      font-size: 1.5rem;
+    }
+  }
+  &__rating {
+    color: #46d369;
+    opacity: 1;
+  }
+  &__genre > span {
+    margin-left: 2rem;
+    position: relative;
+    &::after {
+      content: "&";
+      position: absolute;
+      font-size: 1.5rem;
+      bottom: 0;
+      margin-left: 0.5rem;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child::after {
+      content: "";
+    }
+  }
+
+  &__overview {
+    max-width: 70%;
+    font-size: 1.8rem;
+    font-weight: 500;
+    word-spacing: 0.6rem;
+    @include respond(phone) {
+      font-size: 1.5rem;
+      max-width: 90%;
+    }
+  }
+  &__externalLinks {
+    display: flex;
+    gap: 2rem;
+  }
+  &__externalLink {
+    text-decoration: none;
+    color: rgb(26, 26, 26);
+    transition: color 0.2s ease 0s;
+    &__icon {
+      width: 2rem;
+      stroke: white;
+    }
+  }
+
+  &__cast {
+    margin-top: 2rem;
+    &__title {
+      font-size: 3rem;
+      font-weight: 500;
+    }
+
+    &__members {
+      margin: 2rem 0;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+
+      @include respond(phone) {
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+    }
+  }
+}
+.cast {
+  &__member {
+    text-align: center;
+  }
+  &__image {
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.3s;
+    &:hover {
+      opacity: 1;
+    }
+    @include respond(phone) {
+      height: 5rem;
+      width: 5rem;
+    }
+  }
+  &__name {
+    font-size: 1.5rem;
+    width: 7rem;
+  }
+}

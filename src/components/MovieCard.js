@@ -4,7 +4,7 @@ import './MovieCard.scss';
 const MovieCard = ({ movie }) => {
 
     const image_url = `https://image.tmdb.org/t/p/original/`;
-    console.log(movie);
+
     return (
         <div className="movie__card">
             <div className="movie__card__overlay"></div>

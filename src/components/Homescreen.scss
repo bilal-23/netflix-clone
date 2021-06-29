@@ -1,3 +1,16 @@
 .rows {
   margin-top: -10rem;
 }
+.homescreen {
+  opacity: 0;
+  animation: opacity 0.5s ease-out forwards;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

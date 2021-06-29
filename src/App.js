@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import requests from './axios/Request';
 import { useDispatch } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import requests from './axios/Request';
 import { moviesActions } from './store/moviesSlice';
 import useFetchMovies from './hooks/use-fetchMovies';
 import Homescreen from './components/Homescreen';
 import NetflixIntro from './components/UI/NetflixIntro';
+import Nav from './components/UI/Nav';
+import MovieDetails from './components/MovieDetails';
+import TVdetails from './components/TVdetails';
 import './App.scss';
 
 
@@ -66,15 +70,34 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 5000)
+    }, 4500)
 
     return (() => clearTimeout(timer));
   })
 
   return (
     <div className="App">
-      {showIntro && <NetflixIntro />}
-      {!showIntro && <Homescreen />}
+
+      <Switch>
+        <Route path="/" exact>
+          <Nav />
+          {showIntro && <NetflixIntro />}
+          {!showIntro && <>
+            <Homescreen />
+          </>}
+        </Route>
+        <Route path='/movie/:movieId'>
+          <MovieDetails />
+        </Route>
+        <Route path='/tv/:tvId'>
+          <TVdetails />
+        </Route>
+
+        <Route path='*'>
+          <Redirect to='/' />
+        </Route>
+
+      </Switch>
     </div>
   );
 }

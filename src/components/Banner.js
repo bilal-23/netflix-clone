@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import play from '../assets/play.svg'
 import Button from './UI/Button';
 import './Banner.scss';
@@ -22,10 +23,12 @@ const Banner = ({ movies }) => {
                     <div className="banner__info"><span className="banner__rating">{movie?.vote_average * 10}% Match</span> <span className="banner__year">{movie?.first_air_date?.substr(0, 4)}</span></div>
                     <div className="banner__overview">{truncateString(movie?.overview, 200)}</div>
                     <div className="banner__buttons">
-                        <Button className="button--primary">
-                            <img src={play} alt="play now" />
-                            Play
-                        </Button>
+                        <Link className="btn-link" to={`${movie?.media_type || 'tv'}/${movie?.id}`}>
+                            <Button className="button--primary">
+                                <img src={play} alt="play now" />
+                                Play
+                            </Button>
+                        </Link>
                         <Button className="button--secondary">
                             +
                             My List</Button>
