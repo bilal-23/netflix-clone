@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRef } from 'react';
+import MovieCard from './MovieCard';
 import leftbutton from '../assets/leftbutton.svg'
 import rightButton from '../assets/rightbutton.svg';
 import './Row.scss';
@@ -7,7 +8,7 @@ import './Row.scss';
 const Row = ({ title, movies: movieList }) => {
     const movieRowRef = useRef();
     const [movies, setMovies] = useState([]);
-    const image_url = `https://image.tmdb.org/t/p/original/`;
+
 
     useEffect(() => {
         setMovies(movieList);
@@ -30,7 +31,8 @@ const Row = ({ title, movies: movieList }) => {
             <div className="row__posters" ref={movieRowRef}>
                 <div className="scroll__button left__button" onClick={scrollLeftHandler}><img src={leftbutton} alt="Scroll left" /></div>
                 <div className="scroll__button right__button" onClick={scrollRightHandler}><img src={rightButton} alt="Scroll right" /></div>
-                {movies.map(movie => <img key={movie.id} className={`row__poster`} src={`${image_url}${movie.poster_path}`} alt={movie.title} />)}
+
+                {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
             </div>
         </div>
     )

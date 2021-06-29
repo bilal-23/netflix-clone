@@ -9,7 +9,7 @@ import './App.scss';
 
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
   const dispatch = useDispatch();
   const fetchMovie = useFetchMovies();
   useEffect(() => {

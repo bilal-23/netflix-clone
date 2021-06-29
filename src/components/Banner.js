@@ -19,7 +19,7 @@ const Banner = ({ movies }) => {
             <div className="banner__wrapper">
                 <div className="banner__content">
                     <h1 className="banner__name">{movie?.name || movie?.original_name}</h1>
-                    <div className="banner__info"><span className="banner__rating">{movie?.vote_average * 10}% relevant</span> <span className="banner__year">{movie?.first_air_date?.substr(0, 4)}</span></div>
+                    <div className="banner__info"><span className="banner__rating">{movie?.vote_average * 10}% Match</span> <span className="banner__year">{movie?.first_air_date?.substr(0, 4)}</span></div>
                     <div className="banner__overview">{truncateString(movie?.overview, 200)}</div>
                     <div className="banner__buttons">
                         <Button className="button--primary">
