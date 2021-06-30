@@ -7,8 +7,7 @@ import useFetchMovies from './hooks/use-fetchMovies';
 import Homescreen from './components/Homescreen';
 import NetflixIntro from './components/UI/NetflixIntro';
 import Nav from './components/UI/Nav';
-import MovieDetails from './components/MovieDetails';
-import TVdetails from './components/TVdetails';
+import ShowDetails from './components/ShowDetails';
 import './App.scss';
 
 
@@ -86,11 +85,11 @@ function App() {
             <Homescreen />
           </>}
         </Route>
-        <Route path='/movie/:movieId' exact>
-          <MovieDetails />
+        <Route path='/movie/:movie' exact>
+          <ShowDetails mediaType="movie" />
         </Route>
-        <Route path='/tv/:tvId' exact>
-          <TVdetails />
+        <Route path='/tv/:tv' exact>
+          <ShowDetails mediaType="tv" />
         </Route>
 
         <Route path='*'>

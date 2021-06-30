@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import useWindowDimensions from '../hooks/use-windowDimensions';
 import axios from '../axios/axios';
 import Nav from './UI/Nav';
-import MovieCard from './MovieCard';
-import './MovieDetails.scss';
+import SimilarMovies from './SimilarMovies';
+import "./ShowDetails.scss"
 import instagram from '../assets/instagram.svg';
 import facebook from '../assets/facebook.svg';
 import twitter from '../assets/twitter.svg';
 
-const MovieDetails = () => {
+const ShowDetails = ({ mediaType }) => {
     const dimensions = useWindowDimensions();
     const [movie, setMovie] = useState({});
     const [castCrew, setCastCrew] = useState({});
@@ -21,11 +20,12 @@ const MovieDetails = () => {
 
 
     const params = useParams();
-    const movie_id = params.movieId;
-    const detailMovieUrl = `movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}`;
-    const castAndCrewUrl = `movie/${movie_id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
-    const externalIdUrl = `movie/${movie_id}/external_ids?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
-    const similarUrl = `movie/${movie_id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
+    const movie_id = params[`${mediaType}`];
+    console.log(movie_id)
+    const detailMovieUrl = `${mediaType}/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}`;
+    const castAndCrewUrl = `${mediaType}/${movie_id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
+    const externalIdUrl = `${mediaType}/${movie_id}/external_ids?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
+    const similarUrl = `${mediaType}/${movie_id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
     const image_url = `https://image.tmdb.org/t/p/original/`;
 
     useEffect(() => {
@@ -101,16 +101,9 @@ const MovieDetails = () => {
                     </div>
                 </div>
 
-                {similarMoviesArray.length > 0 && <div className="similar__movies">
-                    <p className="similar__movies__heading">Similar</p>
-                    <div className="similar__movies__list">
-                        {similarMoviesArray?.map(movie => <Link to={`/tv/${movie?.id}`} key={movie?.id}>
-                            <MovieCard key={movie?.id} movie={movie} />
-                        </Link>)}
-                    </div>
-                </div>}
+                {similarMoviesArray.length > 0 && <SimilarMovies similarMovies={similarMoviesArray} mediaType={mediaType} />}
             </div>
         </>
     )
 }
-export default MovieDetails
+export default ShowDetails

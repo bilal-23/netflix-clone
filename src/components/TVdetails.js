@@ -5,7 +5,7 @@ import axios from '../axios/axios';
 import useWindowDimensions from '../hooks/use-windowDimensions';
 import Nav from './UI/Nav';
 import MovieCard from './MovieCard';
-import './MovieDetails.scss';
+// import './MovieDetails.scss';
 import instagram from '../assets/instagram.svg';
 import facebook from '../assets/facebook.svg';
 import twitter from '../assets/twitter.svg';

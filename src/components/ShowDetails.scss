@@ -166,7 +166,6 @@
       margin: 2rem 0;
       display: flex;
       gap: 2rem;
-      align-items: center;
 
       @include respond(phone) {
         flex-wrap: wrap;
@@ -202,23 +201,5 @@
     @include respond(phone) {
       width: 10rem;
     }
-  }
-}
-
-.similar__movies {
-  width: 100%;
-  margin-top: 5rem;
-
-  &__heading {
-    font-size: 3rem;
-    font-weight: 500;
-    margin-bottom: 5rem;
-  }
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
   }
 }
