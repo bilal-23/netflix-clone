@@ -57,7 +57,7 @@ const ShowDetails = ({ mediaType }) => {
                 })
             }
         })
-        setIsLoading(false);
+        setIsLoading(false)
     }, [similarMovies]);
 
 

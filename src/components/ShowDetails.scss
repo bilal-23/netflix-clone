@@ -1,6 +1,7 @@
 @import "../styles/mixins";
 
 .movie__details {
+  position: relative;
   width: 90%;
   margin: 0 auto;
   padding-top: 10rem;
