@@ -69,7 +69,7 @@ const MovieDetails = () => {
                                 {castArray?.map(cast => {
                                     return cast?.profile_path &&
                                         <div className="cast__member">
-                                            <img className="cast__image" src={`${image_url}${cast?.profile_path}`} />
+                                            <img className="cast__image" src={`${image_url}${cast?.profile_path}`} alt={`${cast?.name}`} />
                                             <p className="cast__name">{cast?.name}</p>
                                         </div>
                                 })}
