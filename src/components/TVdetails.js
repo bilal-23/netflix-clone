@@ -13,7 +13,7 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const [castCrew, setCastCrew] = useState({});
     const [externalLinks, setExternalLinks] = useState({});
-    const [similarMovies, setSimilarMovies] = useState({});
+    // const [similarMovies, setSimilarMovies] = useState({});
     const [castArray, setCastArray] = useState([]);
 
     const params = useParams();
@@ -81,7 +81,7 @@ const MovieDetails = () => {
 
                     <div className="detail__content__poster">
                         <div className="detail__content__poster__overlay"></div>
-                        <img src={`${image_url}${dimensions.width > 900 ? movie?.poster_path : movie?.backdrop_path}`} alt="" />
+                        <img src={`${image_url}${dimensions.width > 900 ? movie?.poster_path : movie?.backdrop_path}`} alt={`${movie?.original_title}`} />
                     </div>
                 </div>
                 <div className="similar__movies"></div>
