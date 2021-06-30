@@ -11,14 +11,14 @@ const Homescreen = () => {
 
             <Banner movies={movies.netflixOriginals} />
             <div className="rows">
-                <Row title="Netflix Originals" movies={movies.netflixOriginals} />
-                <Row title="trending now" movies={movies.trending} />
-                <Row title="top rated" movies={movies.topRated} />
-                <Row title="action movies" movies={movies.action} />
-                <Row title="comedy movies" movies={movies.comedy} />
-                <Row title="horror movies" movies={movies.horror} />
-                <Row title="romance movies" movies={movies.romance} />
-                <Row title="documentaries" movies={movies.documentaries} />
+                <Row title="Netflix Originals" mediaType="tv" movies={movies.netflixOriginals} />
+                <Row title="trending now" mediaType="" movies={movies.trending} />
+                <Row title="top rated" mediaType="movie" movies={movies.topRated} />
+                <Row title="action movies" mediaType="movie" movies={movies.action} />
+                <Row title="comedy movies" mediaType="movie" movies={movies.comedy} />
+                <Row title="horror movies" mediaType="movie" movies={movies.horror} />
+                <Row title="romance movies" mediaType="movie" movies={movies.romance} />
+                <Row title="documentaries" mediaType="movie" movies={movies.documentaries} />
             </div>
         </div>
     )

@@ -6,7 +6,7 @@ import leftbutton from '../assets/leftbutton.svg'
 import rightButton from '../assets/rightbutton.svg';
 import './Row.scss';
 
-const Row = ({ title, movies: movieList }) => {
+const Row = ({ title, mediaType, movies: movieList }) => {
     const movieRowRef = useRef();
     const [movies, setMovies] = useState([]);
 
@@ -33,7 +33,7 @@ const Row = ({ title, movies: movieList }) => {
                 <div className="scroll__button left__button" onClick={scrollLeftHandler}><img src={leftbutton} alt="Scroll left" /></div>
                 <div className="scroll__button right__button" onClick={scrollRightHandler}><img src={rightButton} alt="Scroll right" /></div>
 
-                {movies.map(movie => <Link key={movie.id} to={`/${movie?.media_type || 'tv'}/${movie.id}`}> <MovieCard key={movie.id} movie={movie} /></Link>)}
+                {movies.map(movie => <Link key={movie.id} to={`/${mediaType || movie?.media_type}/${movie.id}`}> <MovieCard key={movie.id} movie={movie} /></Link>)}
             </div>
         </div>
     )

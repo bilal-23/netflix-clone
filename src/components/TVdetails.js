@@ -66,7 +66,13 @@ const MovieDetails = () => {
                         <div className="detail__cast">
                             <p className="detail__cast__title">Cast</p>
                             <div className="detail__cast__members">
-                                {castArray?.map((cast, index) => <div key={index} className="cast__member"> {cast?.profile_path && <img className="cast__image" src={`${image_url}${cast?.profile_path}`}></img>} <p className="cast__name">{cast?.name}</p> </div>)}
+                                {castArray?.map(cast => {
+                                    return cast?.profile_path &&
+                                        <div className="cast__member">
+                                            <img className="cast__image" src={`${image_url}${cast?.profile_path}`} />
+                                            <p className="cast__name">{cast?.name}</p>
+                                        </div>
+                                })}
                             </div>
                         </div>
                     </div>
@@ -74,6 +80,7 @@ const MovieDetails = () => {
 
 
                     <div className="detail__content__poster">
+                        <div className="detail__content__poster__overlay"></div>
                         <img src={`${image_url}${dimensions.width > 900 ? movie?.poster_path : movie?.backdrop_path}`} alt="" />
                     </div>
                 </div>
