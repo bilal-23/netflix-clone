@@ -13,7 +13,7 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const [castCrew, setCastCrew] = useState({});
     const [externalLinks, setExternalLinks] = useState({});
-    // const [similarMovies, setSimilarMovies] = useState({});
+    const [similarMovies, setSimilarMovies] = useState({});
     const [castArray, setCastArray] = useState([]);
 
     const params = useParams();
@@ -40,7 +40,7 @@ const MovieDetails = () => {
             }
         })
     }, [castCrew]);
-
+    console.log(similarMovies)
     return (
         <>
             <Nav />
