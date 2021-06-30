@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import requests from './axios/Request';
 import { moviesActions } from './store/moviesSlice';
 import useFetchMovies from './hooks/use-fetchMovies';
-import Homescreen from './components/Homescreen';
+// import Homescreen from './components/Homescreen';
 import NetflixIntro from './components/UI/NetflixIntro';
 import Nav from './components/UI/Nav';
-import ShowDetails from './components/ShowDetails';
+// import ShowDetails from './components/ShowDetails';
 import './App.scss';
+import Loading from './components/UI/Loading';
+
+
+const Homescreen = React.lazy(() => import("./components/Homescreen"));
+const ShowDetails = React.lazy(() => import("./components/ShowDetails"));
 
 
 function App() {
+
   const [showIntro, setShowIntro] = useState(false);
   const dispatch = useDispatch();
   const fetchMovie = useFetchMovies();
@@ -78,24 +84,22 @@ function App() {
     <div className="App">
 
       <Switch>
-        <Route path="/" exact>
-          <Nav />
-          {showIntro && <NetflixIntro />}
-          {!showIntro && <>
-            <Homescreen />
-          </>}
-        </Route>
-        <Route path='/movie/:movie' exact>
-          <ShowDetails mediaType="movie" />
-        </Route>
-        <Route path='/tv/:tv' exact>
-          <ShowDetails mediaType="tv" />
-        </Route>
+        <Suspense fallback={<Loading />}>
+          <Route path="/" exact>
+            {showIntro && <NetflixIntro />}
+            {!showIntro && <> <Nav /><Homescreen /></>}
+          </Route>
+          <Route path='/movie/:movie' exact>
+            <ShowDetails mediaType="movie" />
+          </Route>
+          <Route path='/tv/:tv' exact>
+            <ShowDetails mediaType="tv" />
+          </Route>
 
-        <Route path='*'>
-          <Redirect to='/' />
-        </Route>
-
+          <Route path='*'>
+            <Redirect to='/' />
+          </Route>
+        </Suspense>
       </Switch>
     </div>
   );

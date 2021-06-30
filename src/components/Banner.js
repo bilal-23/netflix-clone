@@ -4,7 +4,7 @@ import play from '../assets/play.svg'
 import Button from './UI/Button';
 import './Banner.scss';
 
-const Banner = ({ movies }) => {
+const Banner = ({ movies, setIsLoading }) => {
     const [movie, setMovie] = useState([]);
     useEffect(() => {
         setMovie(movies[Math.floor(Math.random() * movies.length - 1)])

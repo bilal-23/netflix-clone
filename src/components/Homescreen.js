@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Banner from './Banner';
 import Row from './Row';
+import Loading from './UI/Loading';
 import './Homescreen.scss';
 
 const Homescreen = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const movies = useSelector(state => state.movies);
+
+    console.log(isLoading)
+
     return (
         <div className="homescreen">
 
-            <Banner movies={movies.netflixOriginals} />
+            <Banner movies={movies.netflixOriginals} setIsLoading={setIsLoading} />
             <div className="rows">
                 <Row title="Netflix Originals" mediaType="tv" movies={movies.netflixOriginals} />
                 <Row title="trending now" mediaType="" movies={movies.trending} />

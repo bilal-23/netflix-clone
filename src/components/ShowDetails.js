@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import useWindowDimensions from '../hooks/use-windowDimensions';
 import axios from '../axios/axios';
 import Nav from './UI/Nav';
+import Loading from './UI/Loading';
 import SimilarMovies from './SimilarMovies';
 import "./ShowDetails.scss"
 import instagram from '../assets/instagram.svg';
@@ -11,6 +12,7 @@ import twitter from '../assets/twitter.svg';
 
 const ShowDetails = ({ mediaType }) => {
     const dimensions = useWindowDimensions();
+    const [isLoading, setIsLoading] = useState(true);
     const [movie, setMovie] = useState({});
     const [castCrew, setCastCrew] = useState({});
     const [externalLinks, setExternalLinks] = useState({});
@@ -28,6 +30,7 @@ const ShowDetails = ({ mediaType }) => {
     const image_url = `https://image.tmdb.org/t/p/original/`;
 
     useEffect(() => {
+        setIsLoading(true);
         axios.get(detailMovieUrl).then((req) => setMovie(req.data))
         axios.get(castAndCrewUrl).then((req) => setCastCrew(req.data));
         axios.get(externalIdUrl).then((req) => setExternalLinks(req.data));
@@ -54,7 +57,13 @@ const ShowDetails = ({ mediaType }) => {
                 })
             }
         })
+        setIsLoading(false);
     }, [similarMovies]);
+
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <>
