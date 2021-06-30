@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Banner from './Banner';
 import Row from './Row';
@@ -9,8 +9,18 @@ const Homescreen = () => {
     const [isLoading, setIsLoading] = useState(true);
     const movies = useSelector(state => state.movies);
 
-    console.log(isLoading)
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1000)
+
+        return (() => clearTimeout(timer));
+    })
+
+    if (isLoading) {
+        return <Loading />
+    }
     return (
         <div className="homescreen">
 
