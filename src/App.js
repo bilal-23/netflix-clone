@@ -86,10 +86,10 @@ function App() {
             <Homescreen />
           </>}
         </Route>
-        <Route path='/movie/:movieId'>
+        <Route path='/movie/:movieId' exact>
           <MovieDetails />
         </Route>
-        <Route path='/tv/:tvId'>
+        <Route path='/tv/:tvId' exact>
           <TVdetails />
         </Route>
 
