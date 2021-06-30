@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import axios from '../axios/axios';
 import useWindowDimensions from '../hooks/use-windowDimensions';
 import Nav from './UI/Nav';
+import MovieCard from './MovieCard';
 import './MovieDetails.scss';
 import instagram from '../assets/instagram.svg';
 import facebook from '../assets/facebook.svg';
@@ -15,6 +17,7 @@ const MovieDetails = () => {
     const [externalLinks, setExternalLinks] = useState({});
     const [similarMovies, setSimilarMovies] = useState({});
     const [castArray, setCastArray] = useState([]);
+    const [similarMoviesArray, setSimilarMoviesArray] = useState([]);
 
     const params = useParams();
     const movie_id = params.tvId;
@@ -40,7 +43,17 @@ const MovieDetails = () => {
             }
         })
     }, [castCrew]);
-    console.log(similarMovies)
+
+    useEffect(() => {
+        similarMovies?.results?.forEach((cast, index) => {
+            if (index < 10) {
+                setSimilarMoviesArray(prevState => {
+                    return [...prevState, cast];
+                })
+            }
+        })
+    }, [similarMovies]);
+
     return (
         <>
             <Nav />
@@ -68,7 +81,7 @@ const MovieDetails = () => {
                             <div className="detail__cast__members">
                                 {castArray?.map(cast => {
                                     return cast?.profile_path &&
-                                        <div className="cast__member">
+                                        <div key={cast?.id} className="cast__member">
                                             <img className="cast__image" src={`${image_url}${cast?.profile_path}`} alt={`${cast?.name}`} />
                                             <p className="cast__name">{cast?.name}</p>
                                         </div>
@@ -84,7 +97,14 @@ const MovieDetails = () => {
                         <img src={`${image_url}${dimensions.width > 900 ? movie?.poster_path : movie?.backdrop_path}`} alt={`${movie?.original_title}`} />
                     </div>
                 </div>
-                <div className="similar__movies"></div>
+                {similarMoviesArray.length > 0 && <div className="similar__movies">
+                    <p className="similar__movies__heading">Similar</p>
+                    <div className="similar__movies__list">
+                        {similarMoviesArray?.map(movie => <Link to={`/tv/${movie?.id}`} key={movie?.id}>
+                            <MovieCard key={movie?.id} movie={movie} />
+                        </Link>)}
+                    </div>
+                </div>}
             </div>
         </>
     )

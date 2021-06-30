@@ -5,7 +5,7 @@
   margin: 0 auto;
   padding-top: 10rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   color: white;
   opacity: 0;
@@ -30,6 +30,7 @@
 .detail__content {
   display: grid;
   grid-template-columns: 4fr 1fr;
+  grid-template-rows: auto auto;
   justify-content: center;
 
   @include respond(tab-port) {
@@ -201,5 +202,23 @@
     @include respond(phone) {
       width: 10rem;
     }
+  }
+}
+
+.similar__movies {
+  width: 100%;
+  margin-top: 5rem;
+
+  &__heading {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 5rem;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
   }
 }

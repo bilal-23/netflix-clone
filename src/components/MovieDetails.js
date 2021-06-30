@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router';
-import axios from '../axios/axios';
+import { Link } from 'react-router-dom';
 import useWindowDimensions from '../hooks/use-windowDimensions';
+import axios from '../axios/axios';
 import Nav from './UI/Nav';
+import MovieCard from './MovieCard';
 import './MovieDetails.scss';
 import instagram from '../assets/instagram.svg';
 import facebook from '../assets/facebook.svg';
@@ -10,12 +12,13 @@ import twitter from '../assets/twitter.svg';
 
 const MovieDetails = () => {
     const dimensions = useWindowDimensions();
-    console.log(dimensions)
     const [movie, setMovie] = useState({});
     const [castCrew, setCastCrew] = useState({});
     const [externalLinks, setExternalLinks] = useState({});
     const [similarMovies, setSimilarMovies] = useState({});
     const [castArray, setCastArray] = useState([]);
+    const [similarMoviesArray, setSimilarMoviesArray] = useState([]);
+
 
     const params = useParams();
     const movie_id = params.movieId;
@@ -30,7 +33,9 @@ const MovieDetails = () => {
         axios.get(castAndCrewUrl).then((req) => setCastCrew(req.data));
         axios.get(externalIdUrl).then((req) => setExternalLinks(req.data));
         axios.get(similarUrl).then((req) => setSimilarMovies(req.data));
+
     }, [detailMovieUrl, castAndCrewUrl, externalIdUrl, similarUrl]);
+
 
     useEffect(() => {
         castCrew?.cast?.forEach((cast, index) => {
@@ -41,7 +46,16 @@ const MovieDetails = () => {
             }
         })
     }, [castCrew]);
-    console.log(similarMovies)
+
+    useEffect(() => {
+        similarMovies?.results?.forEach((cast, index) => {
+            if (index < 10) {
+                setSimilarMoviesArray(prevState => {
+                    return [...prevState, cast];
+                })
+            }
+        })
+    }, [similarMovies]);
 
     return (
         <>
@@ -86,7 +100,15 @@ const MovieDetails = () => {
                         <img src={`${image_url}${dimensions.width > 900 ? movie?.poster_path : movie?.backdrop_path}`} alt={`${movie?.original_title}`} />
                     </div>
                 </div>
-                <div className="similar__movies"></div>
+
+                {similarMoviesArray.length > 0 && <div className="similar__movies">
+                    <p className="similar__movies__heading">Similar</p>
+                    <div className="similar__movies__list">
+                        {similarMoviesArray?.map(movie => <Link to={`/tv/${movie?.id}`} key={movie?.id}>
+                            <MovieCard key={movie?.id} movie={movie} />
+                        </Link>)}
+                    </div>
+                </div>}
             </div>
         </>
     )
