@@ -12,6 +12,7 @@
   &__term {
     font-size: 3rem;
     font-weight: 500;
+    margin-bottom: 5rem;
 
     @include respond(phone) {
       font-size: 2rem;
@@ -40,5 +41,17 @@
       display: flex;
       flex-wrap: wrap;
     }
+  }
+}
+
+.noResult {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+
+  &__highlight {
+    color: #e50914;
   }
 }

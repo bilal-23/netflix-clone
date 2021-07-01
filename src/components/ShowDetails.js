@@ -5,14 +5,12 @@ import axios from '../axios/axios';
 import Nav from './UI/Nav';
 import Loading from './UI/Loading';
 import SimilarMovies from './SimilarMovies';
-import "./ShowDetails.scss"
-import instagram from '../assets/instagram.svg';
-import facebook from '../assets/facebook.svg';
-import twitter from '../assets/twitter.svg';
+import "./ShowDetails.scss";
 
 const ShowDetails = ({ mediaType }) => {
     const dimensions = useWindowDimensions();
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(false);
     const [movie, setMovie] = useState({});
     const [castCrew, setCastCrew] = useState({});
     const [externalLinks, setExternalLinks] = useState({});
@@ -32,12 +30,13 @@ const ShowDetails = ({ mediaType }) => {
 
     useEffect(() => {
         setIsLoading(true);
-        axios.get(detailMovieUrl).then((req) => setMovie(req.data))
-        axios.get(castAndCrewUrl).then((req) => setCastCrew(req.data));
-        axios.get(externalIdUrl).then((req) => setExternalLinks(req.data));
-        axios.get(similarUrl).then((req) => setSimilarMovies(req.data));
-
+        axios.get(detailMovieUrl).then((req) => setMovie(req.data)).catch(err => setError(err))
+        axios.get(castAndCrewUrl).then((req) => setCastCrew(req.data)).catch(err => setError(err));
+        axios.get(externalIdUrl).then((req) => setExternalLinks(req.data)).catch(err => setError(err));
+        axios.get(similarUrl).then((req) => setSimilarMovies(req.data)).catch(err => setError(err));
+        setIsLoading(false);
     }, [detailMovieUrl, castAndCrewUrl, externalIdUrl, similarUrl]);
+
 
 
     useEffect(() => {
@@ -59,7 +58,6 @@ const ShowDetails = ({ mediaType }) => {
                 })
             }
         })
-        setIsLoading(false)
 
         return (() => setSimilarMoviesArray([]));
     }, [similarMovies]);
@@ -68,10 +66,22 @@ const ShowDetails = ({ mediaType }) => {
         setImageIsLoaded(true);
     }
 
+    console.log(movie)
+
     if (isLoading) {
         return <Loading />
     }
-
+    if (error) {
+        return (
+            <>
+                <Nav />
+                <div className="error__container">
+                    <h1><span>Something</span> went wrong!</h1>
+                    <h2>Please try again later.</h2>
+                </div>
+            </>
+        )
+    }
     return (
         <>
             <Nav />
@@ -90,9 +100,17 @@ const ShowDetails = ({ mediaType }) => {
                             <p>{movie?.overview}</p>
                         </div>
                         <div className="detail__externalLinks">
-                            {externalLinks?.instagram_id && <a href={`https://www.instagram.com/${externalLinks?.instagram_id}`} className="detail__externalLink"><img className="detail__externalLink__icon" src={instagram} alt="Instagram icon" /></a>}
-                            {externalLinks?.facebook_id && <a href={`https://www.facebook.com/${externalLinks?.facebook_id}`} className="detail__externalLink"><img className="detail__externalLink__icon" src={facebook} alt="facebook icon" /></a>}
-                            {externalLinks?.twitter_id && <a href={`https://www.twitter.com/${externalLinks?.twitter_id}`} className="detail__externalLink"><img className="detail__externalLink__icon" src={twitter} alt="twitter icon" /></a>}
+                            {externalLinks?.instagram_id &&
+                                <a href={`https://www.instagram.com/${externalLinks?.instagram_id}`} className="detail__externalLink">
+                                    <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                </a>}
+                            {externalLinks?.facebook_id && <a href={`https://www.facebook.com/${externalLinks?.facebook_id}`} className="detail__externalLink">
+                                <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            </a>}
+                            {externalLinks?.twitter_id && <a href={`https://www.twitter.com/${externalLinks?.twitter_id}`} className="detail__externalLink">
+                                <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+
+                            </a>}
                         </div>
 
                         <div className="detail__cast">

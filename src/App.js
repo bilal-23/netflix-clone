@@ -17,7 +17,10 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchAllMovies(setIsLoading);
+    try { fetchAllMovies(setIsLoading); }
+    catch (err) {
+
+    }
   }, [fetchAllMovies])
 
 

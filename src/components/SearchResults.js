@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import axios from '../axios/axios';
 import MovieCards from './MovieCard';
 import Nav from './UI/Nav';
@@ -21,14 +22,16 @@ const SearchResults = () => {
         return <Loading />
     }
 
+
     return (
         <>
             <Nav />
             <div className="search">
                 <h2 className="search__term">Search results for <span> {query}</span></h2>
                 <div className="search__cards">
-                    {searchResults && searchResults.map(result => result?.poster_path && <MovieCards movie={result} key={result?.id} />)}
+                    {searchResults && searchResults.map(result => result?.poster_path && <Link to={`/movie/${result.id}`} key={result?.id}> <MovieCards movie={result} key={result?.id} /> </Link>)}
                 </div>
+                {searchResults.length === 0 && <div className="noResult"> <p><span className="noResult__highlight   ">No</span> Movies Found!</p></div>}
             </div>
         </>
     )

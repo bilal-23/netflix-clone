@@ -15,6 +15,7 @@ const useMovies = () => {
 
         const fetchAllMovies = async () => {
             const netflixOriginals = await movie(requests.fetchNetflixOriginals);
+
             dispatch(moviesActions.updateNetflixOriginals(netflixOriginals.filter));
 
             const trending = await movie(requests.fetchTrending);

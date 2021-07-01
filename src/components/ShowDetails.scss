@@ -102,6 +102,11 @@
   &__title {
     font-size: 5rem;
     font-size: 600;
+
+    &::first-letter {
+      color: #e50914;
+    }
+
     @include respond(phone) {
       font-size: 3rem;
     }
@@ -114,6 +119,7 @@
     font-size: 1.8rem;
     opacity: 0.9;
     font-weight: 400;
+
     @include respond(phone) {
       font-size: 1.5rem;
     }
@@ -145,6 +151,7 @@
     font-size: 1.8rem;
     font-weight: 500;
     word-spacing: 0.2rem;
+
     @include respond(phone) {
       font-size: 1.5rem;
       max-width: 90%;
@@ -156,11 +163,14 @@
   }
   &__externalLink {
     text-decoration: none;
-    color: rgb(26, 26, 26);
+    color: rgb(255, 255, 255);
     transition: color 0.2s ease 0s;
     &__icon {
       width: 2rem;
       stroke: white;
+    }
+    &:hover {
+      color: #e50914;
     }
   }
 
@@ -212,5 +222,21 @@
   }
 }
 
-//////////////////////////////////////////////////
-// ANIMATIONS
+.error__container {
+  color: white;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  & h1 {
+    font-size: 5rem;
+    @include respond(phone) {
+      font-size: 2.5rem;
+    }
+    & span {
+      color: #e50914;
+    }
+  }
+}

@@ -91,3 +91,37 @@
 .btn-link {
   text-decoration: none;
 }
+
+//MODAL TEXT
+.error {
+  &__modal {
+    padding: 4rem 6rem;
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    font-size: 3rem;
+
+    @include respond(tab-port) {
+      padding: 2rem 3rem;
+      width: 40rem;
+    }
+    @include respond(phone) {
+      padding: 3rem 2rem;
+      width: 30rem;
+    }
+  }
+}
+.error__heading {
+  font-weight: 500;
+}
+.error__heading > span {
+  color: #e50914;
+}
+.error__text {
+  font-size: 2rem;
+}
