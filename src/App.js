@@ -6,7 +6,9 @@ import NetflixIntro from './components/UI/NetflixIntro';
 import Nav from './components/UI/Nav';
 import Loading from './components/UI/Loading';
 import './App.scss';
+
 const ShowDetails = React.lazy(() => import("./components/ShowDetails"));
+const SearchResults = React.lazy(() => import("./components/SearchResults"));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -46,7 +48,9 @@ function App() {
           <Route path='/tv/:tv'>
             <ShowDetails mediaType="tv" />
           </Route>
-
+          <Route path="/search/:query">
+            <SearchResults />
+          </Route>
 
         </Suspense>
         <Route path='*'>

@@ -12,7 +12,7 @@ const Homescreen = () => {
         <div className="homescreen">
 
             <Banner bannerMovie={bannerMovie} />
-            {/* {movies && <div className="rows">
+            {movies && <div className="rows">
                 <Row title="Netflix Originals" mediaType="tv" movies={movies.netflixOriginals} />
                 <Row title="trending now" mediaType=""
                     movies={movies.trending} />
@@ -28,7 +28,7 @@ const Homescreen = () => {
                     movies={movies.romance} />
                 <Row title="documentaries" mediaType="movie"
                     movies={movies.documentaries} />
-            </div>} */}
+            </div>}
         </div>
     )
 }

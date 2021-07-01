@@ -3,7 +3,7 @@
 .movie__poster {
   max-height: 30rem;
   object-fit: contain;
-  margin-right: 1.5rem;
+  // margin-right: 1.5rem;
   cursor: pointer;
   border-radius: 1rem;
 
@@ -50,7 +50,7 @@
     position: absolute;
     color: white;
     height: 100%;
-    width: 100%;
+    width: 80%;
     bottom: 0;
     left: 0;
     font-size: 1.2rem;

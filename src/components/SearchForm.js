@@ -1,7 +1,9 @@
-import React, { useState, useRef } from 'react'
-import "./Search.scss";
+import React, { useState, useRef } from 'react';
+import { useHistory } from 'react-router';
+import "./SearchForm.scss";
 
-const Search = () => {
+const SearchForm = () => {
+    const history = useHistory();
     const inputRef = useRef();
     const [showSearchBar, setShowSearchBar] = useState(false);
 
@@ -15,7 +17,10 @@ const Search = () => {
             return;
         }
         else {
-            console.log(searchTerm)
+            console.log(searchTerm);
+            inputRef.current.value = "";
+            setShowSearchBar(prevState => !prevState);
+            history.push(`/search/${searchTerm}`)
         }
     }
 
@@ -34,4 +39,4 @@ const Search = () => {
     )
 }
 
-export default Search
+export default SearchForm
