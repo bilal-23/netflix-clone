@@ -24,9 +24,15 @@
     width: 10rem;
     cursor: pointer;
   }
-
-  &__avatar {
+  &__right {
     position: fixed;
+    right: 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-right: 3rem;
+  }
+  &__avatar {
     right: 2rem;
     width: 3rem;
     height: 3rem;

@@ -84,7 +84,7 @@ const ShowDetails = ({ mediaType }) => {
                             <p className="detail__rating">{movie?.vote_average * 10}% Match</p>
                             <p className="detail__year">{movie?.release_date?.substr(0, 4) || movie?.first_air_date?.substr(0, 4)}</p>
                             <p className="detail__genre">{movie?.genres?.map((genre, index) => <span key={index}>{genre.name}</span>)}</p>
-                            <p className="detail__duration">{movie?.runtime} minutes</p>
+                            {movie?.runtime && <p className="detail__duration">{movie?.runtime} minutes</p>}
                         </div>
                         <div className="detail__overview">
                             <p>{movie?.overview}</p>

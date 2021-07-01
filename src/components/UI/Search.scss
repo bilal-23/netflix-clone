@@ -1,0 +1,36 @@
+.form {
+  &__group {
+    padding: 0 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__input {
+    padding: 0.5rem 0rem;
+    width: 0rem;
+    visibility: hidden;
+    outline: transparent;
+    border: transparent;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.919);
+
+    &:focus {
+      background: #fff;
+    }
+  }
+
+  &__button {
+    width: 2rem;
+    height: 2rem;
+    outline: transparent;
+    border: transparent;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+  }
+}

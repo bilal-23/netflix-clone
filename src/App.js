@@ -10,7 +10,7 @@ const ShowDetails = React.lazy(() => import("./components/ShowDetails"));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
   const fetchAllMovies = useMovies();
 
   useEffect(() => {
@@ -46,6 +46,8 @@ function App() {
           <Route path='/tv/:tv'>
             <ShowDetails mediaType="tv" />
           </Route>
+
+
         </Suspense>
         <Route path='*'>
           <Redirect to='/' />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Search from './Search.js'
 import logo from '../../assets/images/logo.png';
 import avatar from '../../assets/images/avatar.png';
 import './Nav.scss';
@@ -17,7 +18,6 @@ const Nav = () => {
     }
     useEffect(() => {
         window.addEventListener('scroll', transitionNavbar)
-
         return () => window.removeEventListener('scroll', transitionNavbar);
     }, [])
 
@@ -26,7 +26,11 @@ const Nav = () => {
         <div className={`nav ${show && 'nav__black'}`}>
             <div className="nav__contents">
                 <Link className="navLink" to="/">   <img src={logo} alt="Netflix logo" className="nav__logo" /></Link>
-                <img src={avatar} alt="Netflix user avatar" className="nav__avatar" />
+
+                <div className="nav__right">
+                    <Search />
+                    <img src={avatar} alt="Netflix user avatar" className="nav__avatar" />
+                </div>
             </div>
         </div>
     )
