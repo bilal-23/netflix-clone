@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import requests from './axios/Request';
 import { moviesActions } from './store/moviesSlice';
 import useFetchMovies from './hooks/use-fetchMovies';
-// import Homescreen from './components/Homescreen';
+import Homescreen from './components/Homescreen';
 import NetflixIntro from './components/UI/NetflixIntro';
 import Nav from './components/UI/Nav';
 // import ShowDetails from './components/ShowDetails';
@@ -12,7 +12,7 @@ import './App.scss';
 import Loading from './components/UI/Loading';
 
 
-const Homescreen = React.lazy(() => import("./components/Homescreen"));
+// const Homescreen = React.lazy(() => import("./components/Homescreen"));
 const ShowDetails = React.lazy(() => import("./components/ShowDetails"));
 
 
@@ -89,17 +89,16 @@ function App() {
             {showIntro && <NetflixIntro />}
             {!showIntro && <> <Nav /><Homescreen /></>}
           </Route>
-          <Route path='/movie/:movie' exact>
+          <Route path='/movie/:movie' >
             <ShowDetails mediaType="movie" />
           </Route>
-          <Route path='/tv/:tv' exact>
+          <Route path='/tv/:tv'>
             <ShowDetails mediaType="tv" />
           </Route>
-
-          <Route path='*'>
-            <Redirect to='/' />
-          </Route>
         </Suspense>
+        <Route path='*'>
+          <Redirect to='/' />
+        </Route>
       </Switch>
     </div>
   );

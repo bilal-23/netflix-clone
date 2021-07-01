@@ -19,6 +19,7 @@ const ShowDetails = ({ mediaType }) => {
     const [similarMovies, setSimilarMovies] = useState({});
     const [castArray, setCastArray] = useState([]);
     const [similarMoviesArray, setSimilarMoviesArray] = useState([]);
+    const [imageIsLoaded, setImageIsLoaded] = useState(false);
 
 
     const params = useParams();
@@ -47,6 +48,7 @@ const ShowDetails = ({ mediaType }) => {
                 })
             }
         })
+        return (() => setCastArray([]))
     }, [castCrew]);
 
     useEffect(() => {
@@ -58,8 +60,13 @@ const ShowDetails = ({ mediaType }) => {
             }
         })
         setIsLoading(false)
+
+        return (() => setSimilarMoviesArray([]));
     }, [similarMovies]);
 
+    const imageLoadHandler = () => {
+        setImageIsLoaded(true);
+    }
 
     if (isLoading) {
         return <Loading />
@@ -68,9 +75,10 @@ const ShowDetails = ({ mediaType }) => {
     return (
         <>
             <Nav />
+            {!imageIsLoaded && <Loading />}
             <div className="movie__details">
                 <div className="detail__content">
-                    <div className="detail__info">
+                    <div className="detail__info" style={{ opacity: imageIsLoaded ? 1 : 0, transition: 'all 1s', visibility: imageIsLoaded && 'visible' }}>
                         <h1 className="detail__title">{movie?.title || movie?.original_title || movie?.name}</h1>
                         <div className="detail__additional__info">
                             <p className="detail__rating">{movie?.vote_average * 10}% Match</p>
@@ -92,7 +100,7 @@ const ShowDetails = ({ mediaType }) => {
                             <div className="detail__cast__members">
                                 {castArray?.map(cast => {
                                     return cast?.profile_path &&
-                                        <div className="cast__member">
+                                        <div className="cast__member" key={cast?.id}>
                                             <img className="cast__image" src={`${image_url}${cast?.profile_path}`} alt={`${cast?.name}`} />
                                             <p className="cast__name">{cast?.name}</p>
                                         </div>
@@ -103,13 +111,13 @@ const ShowDetails = ({ mediaType }) => {
 
 
 
-                    <div className="detail__content__poster">
+                    <div className="detail__content__poster" style={{ display: imageIsLoaded ? 'block' : 'none' }}>
                         <div className="detail__content__poster__overlay"></div>
-                        <img src={`${image_url}${dimensions.width > 900 ? movie?.poster_path : movie?.backdrop_path}`} alt={`${movie?.original_title}`} />
+                        <img src={`${image_url}${dimensions.width > 900 ? movie?.poster_path : movie?.backdrop_path}`} alt={`${movie?.original_title}`} onLoad={imageLoadHandler} />
                     </div>
                 </div>
 
-                {similarMoviesArray.length > 0 && <SimilarMovies similarMovies={similarMoviesArray} mediaType={mediaType} setCastArray={setCastArray} setSimilarMoviesArray={setSimilarMoviesArray} />}
+                {similarMoviesArray.length > 0 && <SimilarMovies similarMovies={similarMoviesArray} mediaType={mediaType} imageIsLoaded={imageIsLoaded} />}
             </div>
         </>
     )

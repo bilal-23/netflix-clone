@@ -17,6 +17,12 @@
   transition: all 0.3s;
   opacity: 0.8;
   cursor: pointer;
+  height: 30rem;
+
+  @include respond(phone) {
+    height: 25rem;
+    // width: 15rem;
+  }
 
   &:hover {
     transform: scale(1.1);

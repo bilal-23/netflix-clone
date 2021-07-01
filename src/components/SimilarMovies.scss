@@ -1,6 +1,9 @@
 .similar__movies {
+  display: none;
   width: 100%;
   margin-top: 5rem;
+  opacity: 0;
+  transition: all 0.2s;
 
   &__heading {
     font-size: 3rem;

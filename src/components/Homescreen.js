@@ -8,23 +8,11 @@ import './Homescreen.scss';
 const Homescreen = () => {
     const [isLoading, setIsLoading] = useState(true);
     const movies = useSelector(state => state.movies);
-
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1000)
-
-        return (() => clearTimeout(timer));
-    })
-
-    if (isLoading) {
-        return <Loading />
-    }
+    const bannerMovie = movies.netflixOriginals[Math.floor(Math.random() * movies.netflixOriginals.length - 1)]
     return (
         <div className="homescreen">
 
-            <Banner movies={movies.netflixOriginals} setIsLoading={setIsLoading} />
+            <Banner bannerMovie={bannerMovie} />
             <div className="rows">
                 <Row title="Netflix Originals" mediaType="tv" movies={movies.netflixOriginals} />
                 <Row title="trending now" mediaType="" movies={movies.trending} />
