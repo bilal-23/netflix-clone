@@ -1,8 +1,13 @@
+@import "../styles/_mixins.scss";
+
 .form {
   &__group {
     padding: 0 1rem;
     display: flex;
     gap: 1rem;
+    @include respond(phone) {
+      gap: 0.5rem;
+    }
   }
 
   &__input {
@@ -14,10 +19,14 @@
     border-radius: 2rem;
     font-size: 1.5rem;
     font-weight: 500;
-    letter-spacing: 0.3rem;
     transition: all 0.5s ease-in-out;
     opacity: 0;
     background: rgba(255, 255, 255, 0.919);
+    color: #111;
+
+    &::placeholder {
+      opacity: 0.5;
+    }
 
     &:focus {
       background: #fff;
@@ -25,6 +34,8 @@
   }
 
   &__button {
+    position: relative;
+    top: 5px;
     width: 2rem;
     height: 2rem;
     outline: transparent;
@@ -32,5 +43,9 @@
     cursor: pointer;
     background: transparent;
     color: white;
+  }
+  @include respond(phone) {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }

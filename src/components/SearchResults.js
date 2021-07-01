@@ -3,16 +3,23 @@ import { useParams } from 'react-router';
 import axios from '../axios/axios';
 import MovieCards from './MovieCard';
 import Nav from './UI/Nav';
+import Loading from './UI/Loading';
 import "./SearchResults.scss"
 
 const SearchResults = () => {
     const params = useParams();
+    const [isLoading, setIsLoading] = useState(true);
     const [searchResults, setSearchResults] = useState([]);
     const query = params.query;
     const searchUrl = `search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
     useEffect(() => {
         axios.get(searchUrl).then((req) => setSearchResults(req.data.results));
+        setIsLoading(false);
     }, [searchUrl])
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <>
