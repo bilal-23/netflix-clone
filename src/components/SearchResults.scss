@@ -30,7 +30,6 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
 
     @include respond(tab-port) {
@@ -38,6 +37,7 @@
     }
     @include respond(phone) {
       margin-top: 5rem;
+
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
