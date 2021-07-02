@@ -12,7 +12,7 @@ const SearchResults = React.lazy(() => import("./components/SearchResults"));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [showIntro, setShowIntro] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const fetchAllMovies = useMovies();
 
   useEffect(() => {

@@ -24,7 +24,9 @@ const SearchResults = () => {
             setInitialLoading(false);
         }, 1000)
 
-        return (() => clearTimeout(timer));
+        return (() => {
+            clearTimeout(timer)
+        });
     })
 
     if (isLoading) {

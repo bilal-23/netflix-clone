@@ -24,7 +24,7 @@
 
   &__cards {
     margin-top: 5rem;
-    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -38,8 +38,8 @@
     }
     @include respond(phone) {
       margin-top: 5rem;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
   }
 }
