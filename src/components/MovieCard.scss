@@ -24,6 +24,9 @@
   height: 30rem;
   transform: scale(0.7);
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @include respond(phone) {
     height: 25rem;
@@ -117,5 +120,6 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  min-width: 15rem;
   transform: translate(50%, 50%);
 }
