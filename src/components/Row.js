@@ -26,6 +26,7 @@ const Row = ({ title, mediaType, movies: movieList }) => {
 
     return (
         <div className="row">
+
             <div className="row__title">
                 <h2 className="row__titleHeading">{title}</h2>
             </div>

@@ -18,6 +18,7 @@ const ShowDetails = ({ mediaType }) => {
     const [castArray, setCastArray] = useState([]);
     const [similarMoviesArray, setSimilarMoviesArray] = useState([]);
     const [imageIsLoaded, setImageIsLoaded] = useState(false);
+    const [castImageLoaded, setCastImageLoaded] = useState(false);
 
 
     const params = useParams();
@@ -34,7 +35,7 @@ const ShowDetails = ({ mediaType }) => {
         axios.get(castAndCrewUrl).then((req) => setCastCrew(req.data)).catch(err => setError(err));
         axios.get(externalIdUrl).then((req) => setExternalLinks(req.data)).catch(err => setError(err));
         axios.get(similarUrl).then((req) => setSimilarMovies(req.data)).catch(err => setError(err));
-        setIsLoading(false);
+
     }, [detailMovieUrl, castAndCrewUrl, externalIdUrl, similarUrl]);
 
 
@@ -58,6 +59,7 @@ const ShowDetails = ({ mediaType }) => {
                 })
             }
         })
+        setIsLoading(false);
 
         return (() => setSimilarMoviesArray([]));
     }, [similarMovies]);
@@ -66,7 +68,10 @@ const ShowDetails = ({ mediaType }) => {
         setImageIsLoaded(true);
     }
 
-    console.log(movie)
+    const castImageLoadHandler = () => {
+        setCastImageLoaded(true);
+    }
+
 
     if (isLoading) {
         return <Loading />
@@ -113,13 +118,13 @@ const ShowDetails = ({ mediaType }) => {
                             </a>}
                         </div>
 
-                        <div className="detail__cast">
+                        <div className="detail__cast" style={{ opacity: castImageLoaded ? '1' : '0' }}>
                             <p className="detail__cast__title">Cast</p>
                             <div className="detail__cast__members">
                                 {castArray?.map(cast => {
                                     return cast?.profile_path &&
                                         <div className="cast__member" key={cast?.id}>
-                                            <img className="cast__image" src={`${image_url}${cast?.profile_path}`} alt={`${cast?.name}`} />
+                                            <img className="cast__image" src={`${image_url}${cast?.profile_path}`} alt={`${cast?.name}`} onLoad={castImageLoadHandler} />
                                             <p className="cast__name">{cast?.name}</p>
                                         </div>
                                 })}

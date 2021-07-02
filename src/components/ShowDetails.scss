@@ -175,6 +175,9 @@
   }
 
   &__cast {
+    opacity: 0;
+    transition: all 1s;
+
     &__title {
       font-size: 3rem;
       font-weight: 500;

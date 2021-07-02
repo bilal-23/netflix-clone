@@ -1,50 +1,26 @@
 @import "../../styles/mixins.scss";
 
 .nav {
-  position: fixed;
+  position: absolute;
+  left: 0;
   top: 0;
   width: 100%;
-  height: 3rem;
-  padding: 2rem;
-  z-index: 1;
-  transition: all 0.5s ease-in;
-
-  &__black {
-    background-color: #111;
-  }
+  overflow: hidden;
+  z-index: 2;
 
   &__contents {
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
-
   &__logo {
-    position: fixed;
-    top: 1rem;
-    left: 0;
-    padding-left: 1rem;
     width: 10rem;
-    cursor: pointer;
   }
   &__right {
-    position: fixed;
-    right: 0;
     display: flex;
-    gap: 2rem;
-    align-items: center;
-    margin-right: 3rem;
-    @include respond(phone) {
-      margin-right: 1rem;
-      gap: 0;
-    }
   }
   &__avatar {
-    right: 2rem;
-    width: 3rem;
-    height: 3rem;
-    cursor: pointer;
+    max-height: 4rem;
   }
-}
-.navLink {
-  text-decoration: none;
 }

@@ -28,6 +28,7 @@ const SearchForm = () => {
     return (
         <form action="" onSubmit={formSubmitHandler}>
             <div className="form__group">
+
                 <input type="text" className="form__input"
                     style={{
                         width: showSearchBar && `${dimension.width > 600 ? '15rem' : '8rem'}`,

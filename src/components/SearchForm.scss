@@ -15,21 +15,17 @@
     width: 0rem;
     visibility: hidden;
     outline: transparent;
-    border: transparent;
+    border: 1px solid white;
     border-radius: 2rem;
     font-size: 1.5rem;
     font-weight: 500;
     transition: all 0.5s ease-in-out;
     opacity: 0;
-    background: rgba(255, 255, 255, 0.919);
-    color: #111;
+    background: transparent;
+    color: #fff;
 
     &::placeholder {
       opacity: 0.5;
-    }
-
-    &:focus {
-      background: #fff;
     }
   }
 
