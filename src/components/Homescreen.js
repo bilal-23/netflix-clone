@@ -33,14 +33,14 @@ const Homescreen = () => {
                         movies={movies.topRated} />
                     <Row title="action movies" mediaType="movie"
                         movies={movies.action} />
-                    {/* <Row title="comedy movies" mediaType="movie"
-                    movies={movies.comedy} />
-                <Row title="horror movies" mediaType="movie"
-                    movies={movies.horror} />
-                <Row title="romance movies" mediaType="movie"
-                    movies={movies.romance} />
-                <Row title="documentaries" mediaType="movie"
-                    movies={movies.documentaries} /> */}
+                    <Row title="comedy movies" mediaType="movie"
+                        movies={movies.comedy} />
+                    <Row title="horror movies" mediaType="movie"
+                        movies={movies.horror} />
+                    <Row title="romance movies" mediaType="movie"
+                        movies={movies.romance} />
+                    <Row title="documentaries" mediaType="movie"
+                        movies={movies.documentaries} />
                 </div>}
             </div>
         </>
