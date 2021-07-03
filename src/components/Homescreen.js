@@ -24,21 +24,21 @@ const Homescreen = ({ movies }) => {
             <div className="homescreen" style={{ opacity: !initialLoading && '1' }}>
                 <Banner bannerMovie={bannerMovie} />
                 {movies && <div className="rows">
-                    <Row title="Netflix Originals" mediaType="tv" movies={movies.netflixOriginals.results} />
+                    <Row title="Netflix Originals" mediaType="tv" movies={movies?.netflixOriginals?.results} />
                     <Row title="trending now" mediaType=""
-                        movies={movies.trending.results} />
+                        movies={movies?.trending?.results} />
                     <Row title="top rated" mediaType="movie"
-                        movies={movies.topRated.results} />
+                        movies={movies?.topRated?.results} />
                     <Row title="action movies" mediaType="movie"
-                        movies={movies.action.results} />
+                        movies={movies?.action?.results} />
                     <Row title="comedy movies" mediaType="movie"
-                        movies={movies.comedy.results} />
+                        movies={movies?.comedy?.results} />
                     <Row title="horror movies" mediaType="movie"
-                        movies={movies.horror.results} />
+                        movies={movies?.horror?.results} />
                     <Row title="romance movies" mediaType="movie"
-                        movies={movies.romance.results} />
+                        movies={movies?.romance?.results} />
                     <Row title="documentaries" mediaType="movie"
-                        movies={movies.documentaries.results} />
+                        movies={movies?.documentaries?.results} />
                 </div>}
             </div>
         </>
