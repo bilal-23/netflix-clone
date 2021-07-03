@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import play from '../assets/play.svg'
 import Button from './UI/Button';
-import Modal from "./UI/Modal";
 import './Banner.scss';
 
 const Banner = ({ bannerMovie }) => {

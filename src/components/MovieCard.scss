@@ -4,24 +4,12 @@
   position: relative;
 }
 
-.movie__poster {
-  max-height: 30rem;
-  object-fit: contain;
-  // margin-right: 1.5rem;
-  cursor: pointer;
-  border-radius: 1rem;
-
-  @include respond(phone) {
-    max-height: 25rem;
-  }
-}
-
 .movie__card {
   position: relative;
   transition: all 0.3s;
   opacity: 0.8;
   cursor: pointer;
-  height: 30rem;
+  width: 20rem;
   transform: scale(0.7);
   transition: all 0.2s ease;
   display: flex;
@@ -29,8 +17,7 @@
   justify-content: center;
 
   @include respond(phone) {
-    height: 25rem;
-    // width: 15rem;
+    width: 18rem;
   }
 
   &:hover {
@@ -77,6 +64,19 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(-1rem);
+  }
+}
+.movie__poster {
+  // max-height: 30rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  // margin-right: 1.5rem;
+  cursor: pointer;
+  border-radius: 1rem;
+
+  @include respond(phone) {
+    // max-height: 25rem;
   }
 }
 
