@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
@@ -6,14 +6,8 @@ import leftbutton from '../assets/leftbutton.svg'
 import rightButton from '../assets/rightbutton.svg';
 import './Row.scss';
 
-const Row = ({ title, mediaType, movies: movieList }) => {
+const Row = ({ title, mediaType, movies }) => {
     const movieRowRef = useRef();
-    const [movies, setMovies] = useState([]);
-
-
-    useEffect(() => {
-        setMovies(movieList);
-    }, [movieList]);
 
     const scrollLeftHandler = () => {
         movieRowRef.current.scrollLeft -= 350;
