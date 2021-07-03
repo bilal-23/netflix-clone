@@ -6,7 +6,7 @@ import './Homescreen.scss';
 import { useEffect } from 'react';
 
 const Homescreen = ({ movies }) => {
-    const bannerMovie = movies.netflixOriginals.results[Math.floor(Math.random() * movies.netflixOriginals.results.length - 1)];
+    const bannerMovie = movies?.netflixOriginals?.results[Math.floor(Math.random() * movies?.netflixOriginals?.results?.length - 1)];
     const [initialLoading, setInitialLoading] = useState(true);
 
     useEffect(() => {
