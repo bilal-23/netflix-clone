@@ -29,6 +29,7 @@ const fetchAllMovies = async (setIsLoading) => {
             documentaries,
             expireTime: Date.now() + 3600000
         };
+        console.log(movies);
         return movies;
 
     }

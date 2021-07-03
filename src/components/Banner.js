@@ -12,15 +12,6 @@ const Banner = ({ bannerMovie }) => {
         return string?.length > n ? string.substr(0, n - 1) + '...' : string
     }
 
-    if (!movie) {
-        return (
-            <Modal><div className="error__modal">
-                <p className="error__heaading"> <span style={{ color: "#e50914" }}>Something</span> went wrong !</p>
-                <p className="error__text"> Please refresh the page.</p>
-            </div> </Modal>
-        )
-    }
-
     return (
         <header className="banner" style={
             { backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")` }

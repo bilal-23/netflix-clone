@@ -13,7 +13,7 @@ const SearchResults = React.lazy(() => import("./components/SearchResults"));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
   const [movies, setMovies] = useState();
   const [error, setError] = useState(false);
 
@@ -32,7 +32,7 @@ function App() {
 
 
   useEffect(() => {
-    const movieInLocalStorage = localStorage.getItem('allMovies');
+    const movieInLocalStorage = JSON.parse(localStorage.getItem('allMovies'));
     if (movieInLocalStorage && movieInLocalStorage.expireTime < Date.now()) {
       localStorage.removeItem("allMovies");
       getAllMovies();
@@ -55,9 +55,11 @@ function App() {
     return (() => clearTimeout(timer));
   })
 
+
   if (isLoading) {
     return <Loading />
   }
+
   if (error) {
     return (
       <Modal><div className="error__modal">
