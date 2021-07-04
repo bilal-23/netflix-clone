@@ -7,6 +7,18 @@ Netflix Clone made with Reactjs.
 - Data fetched from TMDB api.
 - Multiple Routes
 
+## Screenshots
+
+<div align="center" style="
+    flex-wrap: wrap;
+    display: flex;
+    gap: 1rem;
+">
+  <img src="https://raw.githubusercontent.com/bilal-23/netflix-clone/main/examples/example1.PNG" alt="TicTacToe" width="100%">
+  <img src="https://raw.githubusercontent.com/bilal-23/netflix-clone/main/examples/example3.PNG" alt="TicTacToe" width="100%">
+  <img src="https://raw.githubusercontent.com/bilal-23/netflix-clone/main/examples/example5.PNG" alt="TicTacToe" width="100%">
+</div>
+
 ## Getting Started 🚀
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
