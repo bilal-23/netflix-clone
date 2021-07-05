@@ -21,7 +21,7 @@ Netflix Clone made with Reactjs.
 
 ## Getting Started 🚀
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites 📋
 
@@ -69,3 +69,7 @@ Once your server has started, go to this url `http://localhost:8080/` and you wi
 - [ReactJS](https://reactjs.org) - Javascript library
 - [React-router](https://www.npmjs.com/package/react-router) - Routing tool
 - [SCSS](https://sass-lang.com/) - CSS Preprocessor
+
+#### Note-
+
+The Netflix animation used is not mine and I copied it from a [CodePen](https://codepen.io/claudio_bonfati/pen/mdryxPv)
