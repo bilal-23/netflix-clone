@@ -90,10 +90,28 @@ function App() {
         />
         <Route
           path="/movie/:movie"
-          element={<ShowDetails mediaType="movie" />}
+          element={
+            <Suspense fallback={<Loading />}>
+              <ShowDetails mediaType="movie" />
+            </Suspense>
+          }
         />
-        <Route path="/tv/:tv" element={<ShowDetails mediaType="tv" />} />
-        <Route path="/search/:query" element={<SearchResults />} />
+        <Route
+          path="/tv/:tv"
+          element={
+            <Suspense fallback={<Loading />}>
+              <ShowDetails mediaType="tv" />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/search/:query"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SearchResults />
+            </Suspense>
+          }
+        />
         {/* Catch-all route for redirect */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
