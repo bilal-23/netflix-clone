@@ -25,7 +25,7 @@ const Banner = ({ bannerMovie }) => {
             </h1>
             <div className="banner__info">
               <span className="banner__rating">
-                {movie?.vote_average * 10}% Match
+                {(movie?.vote_average * 10).toFixed(2)}% Match
               </span>{" "}
               <span className="banner__year">
                 {movie?.first_air_date?.substr(0, 4)}
