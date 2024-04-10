@@ -1,0 +1,127 @@
+@import "../styles/mixins";
+
+.banner {
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  @include respond(tab-land) {
+    height: 90vh;
+  }
+  @include respond(tab-port) {
+    background-position: center center;
+    height: 80vh;
+  }
+
+  &__wrapper {
+    height: inherit;
+    width: inherit;
+    background: linear-gradient(0deg, #111 10%, transparent 90%);
+  }
+  &__content {
+    width: inherit;
+    height: inherit;
+    background: linear-gradient(90deg, #111 30%, transparent 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 30px;
+    padding-bottom: 150px;
+    color: white;
+
+    @include respond(tab-port) {
+      background: linear-gradient(90deg, #111 1%, transparent 99%);
+    }
+    @include respond(phone) {
+      background: linear-gradient(
+        90deg,
+        rgba(17, 17, 17, 0.582) 5%,
+        transparent 95%
+      );
+    }
+  }
+  &__name {
+    font-size: 6rem;
+    font-weight: 700;
+
+    @include respond(phone) {
+      font-size: 4rem;
+    }
+  }
+  &__info {
+    font-size: 1.8rem;
+    font-weight: 500;
+    display: flex;
+    gap: 2rem;
+    @include respond(phone) {
+      font-size: 1.4rem;
+    }
+  }
+  &__rating {
+    color: #46d369;
+  }
+  &__overview {
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    color: #999;
+    max-width: 40%;
+    overflow: hidden;
+    --max-lines: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    @include respond(tab-port) {
+      max-width: 60%;
+    }
+    @include respond(phone) {
+      max-width: 70%;
+      font-size: 1.5rem;
+    }
+  }
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    @include respond(phone) {
+      gap: 0.8rem;
+    }
+  }
+}
+.btn-link {
+  text-decoration: none;
+}
+
+//MODAL TEXT
+.error {
+  &__modal {
+    padding: 4rem 6rem;
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    font-size: 3rem;
+
+    @include respond(tab-port) {
+      padding: 2rem 3rem;
+      width: 40rem;
+    }
+    @include respond(phone) {
+      padding: 3rem 2rem;
+      width: 30rem;
+    }
+  }
+}
+.error__heading {
+  font-weight: 500;
+}
+.error__heading > span {
+  color: #e50914;
+}
+.error__text {
+  font-size: 2rem;
+}

@@ -1,0 +1,57 @@
+@import "../styles/mixins";
+
+.search {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  color: white;
+  padding: 2rem;
+  margin-top: 10rem;
+
+  &__term {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 5rem;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
+    & span {
+      color: #e50914;
+    }
+  }
+
+  &__cards {
+    margin-top: 5rem;
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @include respond(tab-port) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include respond(phone) {
+      margin-top: 5rem;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+.noResult {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+
+  &__highlight {
+    color: #e50914;
+  }
+}

@@ -1,0 +1,48 @@
+@import "../styles/_mixins.scss";
+
+.form {
+  &__group {
+    padding: 0 1rem;
+    display: flex;
+    gap: 1rem;
+    @include respond(phone) {
+      gap: 0.5rem;
+    }
+  }
+
+  &__input {
+    padding: 0.5rem 0rem;
+    width: 0rem;
+    visibility: hidden;
+    outline: transparent;
+    border: 1px solid white;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    background: transparent;
+    color: #fff;
+
+    &::placeholder {
+      opacity: 0.9;
+      color: white;
+    }
+  }
+
+  &__button {
+    position: relative;
+    top: 5px;
+    width: 2rem;
+    height: 2rem;
+    outline: transparent;
+    border: transparent;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+  }
+  @include respond(phone) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}

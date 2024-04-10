@@ -1,0 +1,66 @@
+@import "../../styles/mixins.scss";
+
+.nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2;
+
+  &__contents {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__left {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    @include respond(phone) {
+      gap: 0.5rem;
+    }
+
+    & p {
+      color: white;
+      font-size: 1.5rem;
+      padding-left: 1rem;
+      font-weight: 400;
+      cursor: pointer;
+      @include respond(phone) {
+        padding-left: 0rem;
+      }
+    }
+  }
+  &__logo {
+    width: 10rem;
+    margin-right: 2rem;
+    @include respond(phone) {
+      margin-right: 0.5rem;
+    }
+  }
+  &__right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    @include respond(phone) {
+      gap: 0.5rem;
+    }
+
+    & svg {
+      cursor: pointer;
+      color: white;
+      font-size: 2rem;
+      margin-right: 1rem;
+      @include respond(phone) {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  &__avatar {
+    cursor: pointer;
+    max-height: 4rem;
+    border-radius: 1rem;
+  }
+}

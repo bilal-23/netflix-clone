@@ -1,0 +1,122 @@
+@import "../styles/mixins";
+
+.movie__card__wrapper {
+  position: relative;
+}
+
+.movie__card {
+  position: relative;
+  transition: all 0.3s;
+  opacity: 0.8;
+  cursor: pointer;
+  width: 20rem;
+  height: 30rem;
+  transform: scale(0.7);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond(phone) {
+    width: 18rem;
+    height: 27rem;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    transition: all 0.3s;
+  }
+  &:hover &__overlay {
+    background: linear-gradient(
+      0deg,
+      rgba(17, 17, 17, 0.685) 30%,
+      transparent 70%
+    );
+  }
+
+  &__info {
+    position: absolute;
+    color: white;
+    height: 100%;
+    width: 80%;
+    bottom: 0;
+    left: 0;
+    font-size: 1.2rem;
+    transition: all 0.4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transform: translateY(0rem);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    transition: transform 0.4s;
+  }
+  &:hover &__info {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-1rem);
+  }
+}
+.movie__poster {
+  // max-height: 30rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  // margin-right: 1.5rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.movie__card {
+  &__name {
+    font-size: 2rem;
+    font-weight: 600;
+    max-width: 90%;
+    padding: 1rem;
+  }
+  &__additionalInfo {
+    padding: 1rem;
+    padding-top: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  &__rating {
+    color: #46d369;
+    margin-right: 1rem;
+  }
+}
+
+@media only screen and (hover: none) {
+  .movie__card {
+    &__overlay {
+      background: linear-gradient(
+        0deg,
+        rgba(17, 17, 17, 0.685) 30%,
+        transparent 70%
+      );
+    }
+    &__info {
+      transform: translateY(-1rem);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.image__placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

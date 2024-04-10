@@ -1,0 +1,80 @@
+@import "../styles/_mixins.scss";
+
+.row {
+  &__titleHeading {
+    text-transform: capitalize;
+    color: white;
+    margin-left: 2.5rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__posters {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 2rem 2.5rem;
+    gap: 1.5rem;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scroll-behavior: smooth;
+  }
+}
+.row__poster {
+  max-height: 30rem;
+  object-fit: contain;
+  margin-right: 1.5rem;
+  transition: transform 0.3s;
+  opacity: 0.9;
+  cursor: pointer;
+  border-radius: 1rem;
+
+  &:hover {
+    transform: scale(1.07);
+    opacity: 1;
+  }
+
+  @include respond(phone) {
+    max-height: 25rem;
+  }
+}
+
+.scroll__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 4rem;
+  height: 30rem;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  @include respond(phone) {
+    max-height: 25rem;
+    width: 3rem;
+  }
+}
+.row:hover .scroll__button {
+  opacity: 1;
+}
+
+.left__button {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  left: 0;
+}
+.right__button {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  right: 0;
+}
